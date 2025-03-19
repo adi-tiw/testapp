@@ -1,0 +1,19 @@
+import axios from "axios";
+import { API_URL } from "@env";
+
+const api = axios.create({
+  baseURL: API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+export const fetchMessage = async () => {
+  try {
+    const response = await api.get("hello/");
+    return response.data;
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error;
+  }
+};
